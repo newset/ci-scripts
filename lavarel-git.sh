@@ -26,8 +26,8 @@ else
 	pull;
 fi
 
-# 更新 composer
-docker run --rm -v /var/opt/www/qa/vr:/data imega/composer install 
-
 # 拷贝文件
 cp .env.example .env
+
+# 更新 composer
+docker run --rm -v /var/opt/www/qa/vr:/data imega/composer install 
