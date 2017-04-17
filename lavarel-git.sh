@@ -13,6 +13,7 @@ if [ ! -d "$SRC_DIR" ]; then
 	mkdir $SRC_DIR; 
 	cd /var/opt/www/qa
 	git clone http://jenkins:1xcxi_9kZny252ww35kx@git.bayanvr.com:81/Fafu/vr.git vr 
+	cd vr
 else 
 	cd /var/opt/www/qa/vr
 	if [ ! -d .ssh ]; then
@@ -23,5 +24,10 @@ else
 
 	# 更新代码
 	pull;
-
 fi
+
+# 更新 composer
+docker run --rm -v /var/opt/www/qa/vr:/data imega/composer install 
+
+# 拷贝文件
+cp .env.example .env
